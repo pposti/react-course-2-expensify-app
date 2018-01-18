@@ -19,27 +19,15 @@ module.exports = (env) => {
         exclude: /node_modules/
       }, {
         test: /\.s?css$/,
-        use: CSSExtract.extract({
-          use : [
-            {
-              loader : 'css-loader',
-              options: {
-                sourceMap: true
-              }
-            },
-            {
-              loader : 'sass-loader',
-              options: {
-                sourceMap: true
-              }
-            }
-          ]
-        })
+          use: CSSExtract.extract({
+            use: [
+              'css-loader',
+              'sass-loader'
+            ]
+          })
       }]
     },
-    plugins : [
-      CSSExtract
-    ],
+    plugins: [CSSExtract],
     devtool: isProduction ? 'source-map' : 'inline-source-map',
     devServer: {
       contentBase: path.join(__dirname, 'public'),
