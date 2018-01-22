@@ -1,135 +1,129 @@
 import * as firebase from 'firebase';
-import { loadavg } from 'os';
 
-  // Initialize Firebase
-  var config = {
-    apiKey: process.env.FIREBASE_API_KEY,
-    authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-    databaseURL: process.env.FIREBASE_DATABASE_URL,
-    projectId: process.env.FIREBASE_PROJECT_ID,
-    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID
-  };
-  firebase.initializeApp(config);
+const config = {
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.FIREBASE_DATABASE_URL,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID
+};
 
-  const database = firebase.database();
+firebase.initializeApp(config);
 
-  export { firebase, database as default };
+const database = firebase.database();
 
-/* 
-  // child_removed
-  database.ref('Expenses').on('child_removed', (snapshot) =>{
-    console.log(snapshot.key, snapshot.val());
-  });
+export { firebase, database as default };
 
-  // child_changed
-  database.ref('Expenses').on('child_changed', (snapshot) => {
-    console.log(snapshot.key, snapshot.val());
-  });
+// // child_removed
+// database.ref('expenses').on('child_removed', (snapshot) => {
+//   console.log(snapshot.key, snapshot.val());
+// });
 
-  // shild_added
-  database.ref('Expenses').on('child_added', (snapshot) => {
-    console.log(snapshot.key, snapshot.val());
-  });
- */
+// // child_changed
+// database.ref('expenses').on('child_changed', (snapshot) => {
+//   console.log(snapshot.key, snapshot.val());
+// });
 
-/*   database.ref('Expenses')
-    .once('value')
-    .then((snapshot) => {
-        const expenses = [];
+// // child_added
+// database.ref('expenses').on('child_added', (snapshot) => {
+//   console.log(snapshot.key, snapshot.val());
+// });
 
-        snapshot.forEach((childSnapshot)=>{
-            expenses.push({
-                id: childSnapshot.key,
-                ...childSnapshot.val()
-            });
-        });
+// // database.ref('expenses')
+// //   .once('value')
+// //   .then((snapshot) => {
+// //     const expenses = [];
 
-        console.log(expenses);
-    })
-    .catch((e) => {
-        console.log(e);
-    }); */
+// //     snapshot.forEach((childSnapshot) => {
+// //       expenses.push({
+// //         id: childSnapshot.key,
+// //         ...childSnapshot.val()
+// //       });
+// //     });
 
-/*     database.ref('Expenses').on('value', (snapshot) => {
-        const expenses = [];
+// //     console.log(expenses);
+// //   });
 
-        snapshot.forEach((childSnapshot)=>{
-            expenses.push({
-                id: childSnapshot.key,
-                ...childSnapshot.val()
-            });
-        });
+// // database.ref('expenses').on('value', (snapshot) => {
+// //   const expenses = [];
 
-        console.log(expenses);
-    }); */
+// //   snapshot.forEach((childSnapshot) => {
+// //     expenses.push({
+// //       id: childSnapshot.key,
+// //       ...childSnapshot.val()
+// //     });
+// //   });
 
-/*   database.ref('Expenses').push({
-    description: 'Creadit card',
-    note:'Something delicious',
-    amount:823,
-    createdAt: 1000000
-  }); */
+// //   console.log(expenses);
+// // });
+
+// database.ref('expenses').push({
+//   description: 'Rent',
+//   note: '',
+//   amount: 109500,
+//   createdAt: 976123498763
+// });
 
 
 
-/* 
-  database.ref('notes').push({
-    title: 'To do',
-    body: 'sdfsdfsdfsdf'
-  });
- */
-
-  /*   database.ref().on('value', (snapshot) => {
-    console.log(snapshot.val());
-  }); */
-
-/*   database.ref()
-    .once('value')
-    .then((snaphot)=>{
-        const val = snaphot.val();
-        console.log(val);
-    }).catch(()=>{
-        console.log('Error fetching data.');
-    }); */
 
 
-  /*
-   database.ref().set({
-    name: 'Petri Posti',
-    age : 100,
-    stressLevel: 6,
-    job:{
-        title: 'Software devloper',
-        company: 'Google'
-    },
-    location: {
-        city:'Tornio',
-        country:'Finland'
-    }
-  }).then(()=>{
-      console.log('Data is saved.');
-  }).catch((e)=>{
-      console.log('update failed.',e);
-  });
 
+// // database.ref('notes/-Krll52aVDQ3X6dOtmS7').remove();
 
-  database.ref().update({
-    stressLevel: 9,
-    'job/company':'Amazon',
-    'location/city':'Seattle'
-  }).then(()=>{
-    console.log('Data is updated.');
-}).catch((e)=>{
-    console.log('update failed.',e);
-});;
+// // database.ref('notes').push({
+// //   title: 'Course Topics',
+// //   body: 'React Native, Angular, Python'
+// // });
 
-  /*  database.ref('location/country')
-  .remove()
-  .then(()=>{
-    console.log('data removed');
-}).catch(()=>{
-    console.log('data not removed.');
-}); 
+// // database.ref().on('value', (snapshot) => {
+// //   const val = snapshot.val();
+// //   console.log(`${val.name} is a ${val.job.title} at ${val.job.company}`);
+// // })
 
-*/
+// // Setup data sub -> Andrew is a Software Developer at Amazon.
+
+// // Change the data and make sure it reprints
+
+// // database.ref('location/city')
+// //   .once('value')
+// //   .then((snapshot) => {
+// //     const val = snapshot.val();
+// //     console.log(val);
+// //   })
+// //   .catch((e) => {
+// //     console.log('Error fetching data', e);
+// //   });
+
+// // database.ref().set({
+// //   name: 'Andrew Mead',
+// //   age: 26,
+// //   stressLevel: 6,
+// //   job: {
+// //     title: 'Software developer',
+// //     company: 'Google'
+// //   },
+// //   location: {
+// //     city: 'Philadelphia',
+// //     country: 'United States'
+// //   }
+// // }).then(() => {
+// //   console.log('Data is saved!');
+// // }).catch((e) => {
+// //   console.log('This failed.', e);
+// // });
+
+// // database.ref().update({
+// //   stressLevel: 9,
+// //   'job/company': 'Amazon',
+// //   'location/city': 'Seattle'
+// // });
+
+// // database.ref()
+// //   .remove()
+// //   .then(() => {
+// //     console.log('Data was removed');
+// //   }).catch((e) => {
+// //     console.log('Did not remove data', e);
+// //   });
